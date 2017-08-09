@@ -199,49 +199,6 @@ class Controller extends BaseController
 			]);
 	}
 
-	public function loja(){
-
-		$produto = texto::where('excluido','=','0')
-		->where('visivel','=','1')
-		->where('localizacao','=','6')
-		->orderby('data','desc')
-		->get();
-
-		$propaganda = texto::where('excluido','=','0')
-		->where('visivel','=','1')
-		->where('localizacao','=','4')
-		->orderby('data','desc')
-		->get();
-
-		return view('pages.loja',[
-
-			'propaganda'=>$propaganda,
-			'produto'=>$produto
-
-			]);
-	}
-
-	public function lojaDetalhe($id){
-
-		$produto = texto::where('id','=',$id)
-		->limit(1)
-		->get();
-
-		$propaganda = texto::where('excluido','=','0')
-		->where('visivel','=','1')
-		->where('localizacao','=','4')
-		->orderby('data','desc')
-		->get();
-
-		return view('pages.loja_detalhe',[
-
-			'produto'=>$produto,
-			'propaganda'=>$propaganda
-
-			]);
-	}
-
-
 
 
 	// Funções do painel-site

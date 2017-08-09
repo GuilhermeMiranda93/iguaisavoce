@@ -104,6 +104,27 @@ Banner
 
 /*-----------------------
 
+Navigation Menu
+
+-------------------------*/
+
+.navigation-menu{
+	background-color: $cor_secundaria;
+	i, a{
+		color: white;
+	}
+	.icon-cart{
+		span{
+			border-radius: 50%;
+			padding: 1em;
+			background-color: white;
+			color: $cor_secundaria;
+		}
+	}
+}
+
+/*-----------------------
+
 Navbar
 
 -------------------------*/
@@ -113,6 +134,10 @@ Navbar
 	padding: 0;
 	box-shadow: 0 0 20px 0 rgba(0,0,0,.3);
 	min-height: 100vh;
+}
+
+.menu-tablet{
+	display: none;
 }
 
 .nav{
@@ -150,26 +175,7 @@ Navbar
 		}
 	}
 
-	#loja{
-		text-align: center;
-		padding: 1em;
-		color: $cor_secundaria;
-		background-color: $cor_principal_mais_clara;
-		border-top: 2px inset rgba(255,255,255,.5);
-		border-bottom: 2px outset rgba(255,255,255,.5);
 
-		.btn{
-			background-color: $branco;
-			color: $cor_secundaria;
-			font-weight: 700;
-		}
-		.valor{
-			font-size: 12pt;
-			big{
-				font-size: 24pt;
-			}
-		}
-	}
 }
 
 /*-----------------------
@@ -387,32 +393,33 @@ Merchan
 
 /*-----------------------
 
-Painel
+Loja
 
--------------------------*/
-
-.loja{
+------------------------*/
+#loja{
+	text-align: left;
+	padding: 1em;
+	color: $cor_secundaria;
 
 	h2{
-		color: $cor_secundaria;
-		font-weight: 900;
-		margin: 0 !important;
+		font-weight: 700;
 	}
-	p{
-		margin: 0 !important;
-		&.price{
-			color: $cor_principal;
-			font-weight: 900;
-			margin: 0 !important;
-		}
-		small{
-			font-style: italic;
-			color: $cinza_escuro;
-			margin: 0 !important;
+
+	.btn{
+		background-color: $cor_secundaria;
+		color: $branco;
+		border: none;
+		border-color: transparent;
+		font-size: 10pt;
+		padding: 1em;
+	}
+	.price{
+		font-size: 12pt;
+		big{
+			font-size: 24pt;
 		}
 	}
 }
-
 
 /*-----------------------
 
@@ -502,5 +509,52 @@ Painel
 			background-color: rgb(41,43,44);
 			color: $branco;
 		}
+	}
+}
+
+#cadastro{
+	display: none;
+}
+
+#loading{
+	background-color: rgba(0,0,0,.5);
+	width:100%;
+	height:100%;
+	display: none;
+	justify-content: center;
+	align-items: center;
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: 9999;
+	&>div{
+		padding: 2em;
+		background-color: white;
+		box-shadow: 0 0 5px 0 rgba(0,0,0,.3);
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		border-radius: 10px;
+		img{
+			width: 40px;
+		}
+	}
+	
+}
+
+/*-----------------------
+
+Media Queri
+
+-------------------------*/
+@media screen and (max-width: 768px){
+	#navbar{
+		min-height:0;
+	}
+	.menu-tablet{
+		display: block;
+	}
+	.menu-desktop{
+		display: none;
 	}
 }

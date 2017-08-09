@@ -79,6 +79,21 @@ Banner
 
 /*-----------------------
 
+Navigation Menu
+
+-------------------------*/
+.navigation-menu {
+  background-color: #422121; }
+  .navigation-menu i, .navigation-menu a {
+    color: white; }
+  .navigation-menu .icon-cart span {
+    border-radius: 50%;
+    padding: 1em;
+    background-color: white;
+    color: #422121; }
+
+/*-----------------------
+
 Navbar
 
 -------------------------*/
@@ -87,6 +102,9 @@ Navbar
   padding: 0;
   box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.3);
   min-height: 100vh; }
+
+.menu-tablet {
+  display: none; }
 
 .nav li {
   padding: 1em;
@@ -116,22 +134,6 @@ Navbar
   border-bottom: 2px outset rgba(255, 255, 255, 0.5); }
   .nav #assuntos li {
     border: none; }
-
-.nav #loja {
-  text-align: center;
-  padding: 1em;
-  color: #422121;
-  background-color: #FFC885;
-  border-top: 2px inset rgba(255, 255, 255, 0.5);
-  border-bottom: 2px outset rgba(255, 255, 255, 0.5); }
-  .nav #loja .btn {
-    background-color: #fff;
-    color: #422121;
-    font-weight: 700; }
-  .nav #loja .valor {
-    font-size: 12pt; }
-    .nav #loja .valor big {
-      font-size: 24pt; }
 
 /*-----------------------
 
@@ -276,24 +278,26 @@ Merchan
 
 /*-----------------------
 
-Painel
+Loja
 
--------------------------*/
-.loja h2 {
-  color: #422121;
-  font-weight: 900;
-  margin: 0 !important; }
-
-.loja p {
-  margin: 0 !important; }
-  .loja p.price {
-    color: #FFBC6C;
-    font-weight: 900;
-    margin: 0 !important; }
-  .loja p small {
-    font-style: italic;
-    color: #8C8C8C;
-    margin: 0 !important; }
+------------------------*/
+#loja {
+  text-align: left;
+  padding: 1em;
+  color: #422121; }
+  #loja h2 {
+    font-weight: 700; }
+  #loja .btn {
+    background-color: #422121;
+    color: #fff;
+    border: none;
+    border-color: transparent;
+    font-size: 10pt;
+    padding: 1em; }
+  #loja .price {
+    font-size: 12pt; }
+    #loja .price big {
+      font-size: 24pt; }
 
 /*-----------------------
 
@@ -363,3 +367,41 @@ Painel
     .painel-login button:hover {
       background-color: #292b2c;
       color: #fff; }
+
+#cadastro {
+  display: none; }
+
+#loading {
+  background-color: rgba(0, 0, 0, 0.5);
+  width: 100%;
+  height: 100%;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 9999; }
+  #loading > div {
+    padding: 2em;
+    background-color: white;
+    box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.3);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px; }
+    #loading > div img {
+      width: 40px; }
+
+/*-----------------------
+
+Media Queri
+
+-------------------------*/
+@media screen and (max-width: 768px) {
+  #navbar {
+    min-height: 0; }
+  .menu-tablet {
+    display: block; }
+  .menu-desktop {
+    display: none; } }
