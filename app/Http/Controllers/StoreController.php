@@ -309,6 +309,55 @@ class StoreController extends BaseController
 
 	}
 
+	public function calcularFrete(Request $request){
+
+		$nCdEmpresa = '17291364';
+		$sDsSenha = '27938029';
+		$nCdServico = $request->servico;
+		$sCepOrigem = '37701000';
+		$nVlPeso = $request->peso;
+		$nCdFormato = 1;
+		$nVlComprimento = $request->comprimento;
+		$nVlAltura = $request->altura;
+		$nVlLargura = $request->largura;
+		$nVlDiametro = 0;
+		$sCdMaoPropria = 'N';
+		$nVlValorDeclarado = $request->valordeclarado;
+		$sCdAvisoRecebimento = 'N';
+		$StrRetorno = 'XML';
+		$nIndicaCalculo = '3';
+		$sCepDestino = $request->destino;
+
+
+
+		$url = 'http://ws.correios.com.br/calculador/CalcPrecoPrazo.aspx?';
+		$url .= "&nCdEmpresa=".$nCdEmpresa;
+		$url .= "&sDsSenha=".$sDsSenha;
+		$url .= "&nCdServico=".$nCdServico;
+		$url .= "&sCepOrigem=".$sCepOrigem;
+		$url .= "&nVlPeso=".$nVlPeso;
+		$url .= "&nCdFormato=".$nCdFormato;
+		$url .= "&nVlComprimento=".$nVlComprimento;
+		$url .= "&nVlAltura=".$nVlAltura;
+		$url .= "&nVlLargura=".$nVlLargura;
+		$url .= "&nVlDiametro=".$nVlDiametro;
+		$url .= "&sCdMaoPropria=".$sCdMaoPropria;
+		$url .= "&nVlValorDeclarado=".$nVlValorDeclarado;
+		$url .= "&sCdAvisoRecebimento=".$sCdAvisoRecebimento;
+		$url .= "&StrRetorno=".$StrRetorno;
+		$url .= "&nIndicaCalculo=".$nIndicaCalculo;
+		$url .= "&sCepDestino=".$sCepDestino;
+
+		// dd($url);
+
+		$xml = simplexml_load_file($url);
+
+		$xml = $xml->cServico;
+
+		echo $xml->Valor;
+
+	}
+
 	public function finalizar(){		
 
 		$propaganda = texto::where('excluido','=','0')
@@ -321,9 +370,9 @@ class StoreController extends BaseController
 
 		return view('pages.cadastro',[
 
-			'propaganda'=>$propaganda,
+		'propaganda'=>$propaganda,
 
-			]);
+		]);
 	}
 
 

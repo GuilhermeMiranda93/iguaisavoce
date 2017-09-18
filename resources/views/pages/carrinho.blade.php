@@ -39,7 +39,7 @@
 
 				<tr class="table-warning">
 					<td colspan="2">Frete</td>
-					<td colspan="2" class="text-right" id="frete" value="25">R$ 25,00</td>
+					<td colspan="2" class="text-right" id="frete" value="0">R$ 0</td>
 				</tr>
 
 				<tr class="table-success">
@@ -50,6 +50,42 @@
 
 		</table>
 
+
+		<form class="mb-4">
+			{{csrf_field()}}
+			<div class="form-group">
+				<input type="number" class="form-control" name="sCepDestino" id="destino" placeholder="Digite seu CEP">
+				<small>Somente números</small>
+			</div>
+
+			<input type="text" name="nCdServico" value="41106" placeholder="Serviço de envio" hidden>
+
+			<fieldset class="form-group">
+				<legend>Escolha a opção de envio</legend>
+				<div class="form-check">
+					<label class="form-check-label">
+						<input type="radio" class="form-check-input" name="optionsRadios" id="servico1" value="40010" checked>
+						SEDEX
+					</label>
+				</div>
+
+				<div class="form-check">
+					<label class="form-check-label">
+						<input type="radio" class="form-check-input" name="optionsRadios" id="servico2" value="41106">
+						PAC
+					</label>
+				</div>
+
+			</fieldset>
+
+			<input type="text" name="nVlPeso" value="0.100" id="peso" placeholder="Peso" hidden>
+			<input type="number" name="nVlComprimento" value="25" id="comprimento" placeholder="Comprimento" hidden>
+			<input type="number" name="nVlAltura" value="30" id="altura" placeholder="Altura" hidden>
+			<input type="number" name="nVlLargura" value="25" id="largura" placeholder="Largura" hidden>
+
+		</form>
+
+		<button class="btn btn-primary mb-4" id="calcular_frete">Calcular Frete</button>
 		<button class="btn btn-primary mb-4" id="finalizar_compra">Finalizar compra</button>
 
 	</div>

@@ -27,7 +27,7 @@ Route::get('/videos', 'Controller@videos');
 
 Route::get('/assuntos/post/{id}', 'Controller@assuntosPost');
 
-
+Route::post('/calcular-frete', 'StoreController@calcularFrete');
 
 Route::get('/shopping', 'StoreController@LojaLista');
 Route::get('/shopping/{id}', 'StoreController@LojaDetalhe');
