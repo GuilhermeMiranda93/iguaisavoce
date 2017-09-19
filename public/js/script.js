@@ -121,38 +121,50 @@ $('#calcular_frete').click(function(){
 
 		}
 
-		$.ajax({
-			headers: {
-				'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-			},
-			type: "POST",
-			url:"/calcular-frete",
-			dataType: "html",
-			cache: false,
-			async: false,
-			data:{
-				peso: $('#peso').attr('value'),
-				comprimento: $('#comprimento').attr('value'),
-				altura: $('#altura').attr('value'),
-				largura: $('#largura').attr('value'),
-				valordeclarado: valortotal,
-				servico: $('input[name="optionsRadios"]:checked').val(),
-				destino: $('#destino').val()
-			},
-			success: function (data) {
-				console.log('sucesso');
-				$('#frete').attr('value', data);
-				$('#frete').text('R$ '+data);
+		var value_input = $('input[name="optionsRadios"]:checked').val();
 
-				calcularValorTotal();
-			},
-			beforeSend: function(){
+		if(value_input == 'frete_normal'){
+			$('#frete').attr('value', 10);
+			$('#frete').text('R$ '+'10,00');
 
-			},
-			error: function(jqXHR, textStatus, errorThrown){
-				console.log('erro');
-			}
-		});
+			calcularValorTotal();
+		}
+		else{
+			$.ajax({
+				headers: {
+					'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+				},
+				type: "POST",
+				url:"/calcular-frete",
+				dataType: "html",
+				cache: false,
+				async: false,
+				data:{
+					peso: $('#peso').attr('value'),
+					comprimento: $('#comprimento').attr('value'),
+					altura: $('#altura').attr('value'),
+					largura: $('#largura').attr('value'),
+					valordeclarado: valortotal,
+					servico: $('input[name="optionsRadios"]:checked').val(),
+					destino: $('#destino').val()
+				},
+				success: function (data) {
+					console.log(data);
+					$('#frete').attr('value', data);
+					$('#frete').text('R$ '+data);
+
+					calcularValorTotal();
+				},
+				beforeSend: function(){
+					console.log('teste');
+				},
+				error: function(jqXHR, textStatus, errorThrown){
+					console.log('erro');
+				}
+			});
+		}
+
+		
 
 	}
 	else{

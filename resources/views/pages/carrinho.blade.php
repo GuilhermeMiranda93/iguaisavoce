@@ -64,7 +64,14 @@
 				<legend>Escolha a opção de envio</legend>
 				<div class="form-check">
 					<label class="form-check-label">
-						<input type="radio" class="form-check-input" name="optionsRadios" id="servico1" value="40010" checked>
+						<input type="radio" class="form-check-input" name="optionsRadios" id="servico0" value="frete_normal" checked>
+						Normal
+					</label>
+				</div>
+
+				<div class="form-check">
+					<label class="form-check-label">
+						<input type="radio" class="form-check-input" name="optionsRadios" id="servico1" value="40010">
 						SEDEX
 					</label>
 				</div>
@@ -79,9 +86,9 @@
 			</fieldset>
 
 			<input type="text" name="nVlPeso" value="0.100" id="peso" placeholder="Peso" hidden>
-			<input type="number" name="nVlComprimento" value="25" id="comprimento" placeholder="Comprimento" hidden>
-			<input type="number" name="nVlAltura" value="30" id="altura" placeholder="Altura" hidden>
-			<input type="number" name="nVlLargura" value="25" id="largura" placeholder="Largura" hidden>
+			<input type="number" name="nVlComprimento" value="27" id="comprimento" placeholder="Comprimento" hidden>
+			<input type="number" name="nVlAltura" value="9" id="altura" placeholder="Altura" hidden>
+			<input type="number" name="nVlLargura" value="18" id="largura" placeholder="Largura" hidden>
 
 		</form>
 
@@ -90,5 +97,9 @@
 
 	</div>
 
+</div>
+
+<div class="loader">
+	<img src="{{URL::asset('img/loader.gif')}}" class="img-fluid">
 </div>
 @stop
