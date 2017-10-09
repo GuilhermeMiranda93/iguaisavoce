@@ -7,11 +7,11 @@
 
 	<!-- Aqui começa os blogs -->
 
-	<div class="col-md-3 nested-items">
+	<div class="col-xs-12 col-xl-3 nested-items">
 
 		@foreach($texto as $texto_home)
 
-		<a href="{{URL::asset('assuntos/post/'.$texto_home->id)}}" class="blog_preview">
+		<a href="{{URL::asset('assuntos/post/'.$texto_home->id)}}" class="blog_preview mb-4">
 			<div class="card item-1">
 				<div class="div-img">
 					<img class="card-img-top img-max-x" src="img/{{$texto_home->arquivo}}" alt="Card image cap"/>
@@ -28,7 +28,7 @@
 
 
 
-	<div class="col-md-9">
+	<div class="col-xs-12 col-xl-9">
 		@foreach($texto2 as $texto_home)
 		<a href="{{URL::asset('assuntos/post/'.$texto_home->id)}}" class="blog_preview">
 			<div class="card item-3">

@@ -39,7 +39,7 @@ class StoreController extends BaseController
 			'produto'=>$produto,
 			'propaganda'=>$propaganda
 
-			]);
+		]);
 
 	}
 
@@ -48,6 +48,12 @@ class StoreController extends BaseController
 		->where('id','=',$id)
 		->where('visivel','=','1')
 		->orderby('nome','asc')
+		->get();
+
+		$produtoextras = produto::where('excluido','=','0')
+		->where('visivel','=','1')
+		->orderby('nome','asc')
+		->limit(3)
 		->get();
 
 		$propaganda = texto::where('excluido','=','0')
@@ -67,9 +73,10 @@ class StoreController extends BaseController
 		return view('pages.loja_detalhe',[
 
 			'produto'=>$produto,
+			'produtoextras'=>$produtoextras,
 			'propaganda'=>$propaganda
 
-			]);
+		]);
 
 	}
 
@@ -79,10 +86,6 @@ class StoreController extends BaseController
 
 		$nome = $req->input('nome');
 		$valor = $req->input('valor');
-		$largura = $req->input('largura');
-		$altura = $req->input('altura');
-		$profundidade = $req->input('profundidade');
-		$peso = $req->input('peso');
 		$descricao = $req->input('descricao');
 		$autor = $req->input('autor');
 		$imagem = $req->file('imagem')->getClientOriginalName();
@@ -90,23 +93,15 @@ class StoreController extends BaseController
 		$imagem = 'img/'.$imagem;
 
 		$valor = str_replace(",", ".", $valor);
-		$largura = str_replace(",", ".", $largura);
-		$altura = str_replace(",", ".", $altura);
-		$profundidade = str_replace(",", ".", $profundidade);
-		$peso = str_replace(",", ".", $peso);
 
 		$data = array(
 			'nome'=>$nome,
 			'valor'=>$valor,
-			'largura'=>$largura,
-			'altura'=>$altura,
-			'profundidade'=>$profundidade,
-			'peso'=>$peso,
 			'descricao'=>$descricao,
 			'autor'=>$autor,
 			'imagem'=>$imagem
 
-			);
+		);
 
 		$produto->insert($data);
 
@@ -171,7 +166,7 @@ class StoreController extends BaseController
 		return view('painel.assuntoedit',[
 			'item'=>$item,
 			'item_salvos'=>$item_salvos
-			]);
+		]);
 	}
 
 	public function painelProduto(){
@@ -184,7 +179,7 @@ class StoreController extends BaseController
 
 			'produto'=>$produto
 
-			]);
+		]);
 	}
 
 	public function addProdutoCarrinho(Request $request, $id){
@@ -235,6 +230,30 @@ class StoreController extends BaseController
 
 	}
 
+	public function alterarQuantidade(Request $request){
+
+		$id = $request->input('id');
+		$qtd = $request->input('qtd');
+
+		$value = $request->session()->get('cart');
+		
+		foreach($value as $obj){
+			if($obj->productID == $id){
+				$obj->qtd = $qtd;
+
+			}
+		}
+
+		$request->session()->flush();
+		
+		$request->session()->put('cart', $value);
+
+		$request->session()->save();
+
+
+
+	}
+
 	public function removerProdutoCarrinho(Request $request, $id){
 
 		$value = Session::get('cart');
@@ -243,6 +262,7 @@ class StoreController extends BaseController
 
 
 		Session::flush();
+		Session::save();
 
 		$request->session()->put('cart', []);
 
@@ -276,6 +296,8 @@ class StoreController extends BaseController
 
 				foreach ($value as $id) {
 					if($items->id == $id->productID){
+
+						$items->qtdsession = $id->qtd;
 						$data = array_merge($data,array($items));
 					}
 				}
@@ -305,7 +327,7 @@ class StoreController extends BaseController
 			'propaganda'=>$propaganda,
 			'valortotal' =>$valortotal
 
-			]);
+		]);
 
 	}
 
@@ -370,7 +392,7 @@ class StoreController extends BaseController
 
 		return view('pages.cadastro',[
 
-		'propaganda'=>$propaganda,
+			'propaganda'=>$propaganda,
 
 		]);
 	}

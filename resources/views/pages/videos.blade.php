@@ -5,8 +5,8 @@
 
 	<div class="row outros_assuntos">
 		@foreach($texto as $video)
-		<div class="col-md-6">
-			<iframe width="560" height="315" src="{{$video->arquivo}}" frameborder="0" allowfullscreen></iframe>
+		<div class="col-12 col-xl-6 p-2">
+			<iframe width="100%" height="315" src="{{$video->arquivo}}" frameborder="0" allowfullscreen></iframe>
 		</div>
 		@endforeach
 

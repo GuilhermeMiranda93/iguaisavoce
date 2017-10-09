@@ -37,6 +37,7 @@
             <ul class="nav navbar-nav" role="navigation">
                 <li class="navbar-header"><img class="img-max-x" src="{{URL::asset('img/logo.png')}}"></li>
 
+                <a href="/painel/sobre"><li><i class="fa fa-users" aria-hidden="true"></i> Editar Sobre</li></a>
                 <a href="/painel/assunto"><li><i class="fa fa-quote-left" aria-hidden="true"></i> Novo Assunto</li></a>
                 <a href="/painel/audio"><li><i class="fa fa-play-circle" aria-hidden="true"></i> Novo Áudio</li></a>
                 <a href="/painel/video"><li><i class="fa fa-youtube-play" aria-hidden="true"></i> Novo Vídeo</li></a>

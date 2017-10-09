@@ -1,7 +1,6 @@
 $(document).ready(function(){
 
-
-
+	$('#loading').css('display','none');
 
 // Função quando posiciona o mouse em cima do post
 $('.blog_preview').hover(function(){
@@ -72,34 +71,52 @@ if($('.valorcarrinho').length > 0){
 
 // Função quando muda a quantidade
 $( ".numberinput" ).change(function() {
-	calcularValorTotal();
+
+
+	$.ajax({
+		type: "POST",
+		url: "alterarquantidade",
+		headers: {
+			'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+		},
+		data: {
+			'id':$(this).parent().parent().find('.id_produto').val(),
+			'qtd':$(this).val()
+		},
+		headers: {
+			'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+		},
+		beforeSend: function(){
+			$('#loading').css('display','flex');
+		},
+		success: function(data){
+			calcularValorTotal();
+			$('#loading').css('display','none');
+		}
+	});
+
+
 });
 
 // Função quando finaliza a compra (PagSeguro)
 $('#finalizar_compra').click(function(){
 
-	if($('#frete').attr('value') <= 0){
-		alert('Calcule o frete antes de finalizar o pedido');
-	}
-	else{
-		$(document).ajaxStart(function(){
+	$.ajax({
+		type: "POST",
+		url: "pagseguro",
+		headers: {
+			'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+		},
+		beforeSend: function(){
 			$('#loading').css('display','flex');
-		}); 
-
-		$(document).ajaxStop(function(){
+		},
+		success: function(data){
 			$('#loading').css('display','none');
-		});
-
-		$.ajaxSetup({
-			headers: {
-				'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-			}
-		});
-
-		$.post('http://127.0.0.1:8000/pagseguro',function(data){
-			PagSeguroLightbox(data);
-		})
-	}
+			$('#code').val(data);
+			console.log("data retornada="+data);
+			$('#comprar').submit();
+		}
+	});
 
 	
 });
@@ -130,6 +147,7 @@ $('#calcular_frete').click(function(){
 			calcularValorTotal();
 		}
 		else{
+			console.log('frete não normal');
 			$.ajax({
 				headers: {
 					'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')

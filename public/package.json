@@ -9,8 +9,9 @@
   "author": "Guilherme",
   "license": "ISC",
   "dependencies": {
-    "gulp-jshint": "*",
-    "gulp-concat": "*"
+    "gulp-clean": "^0.3.2",
+    "gulp-concat": "*",
+    "gulp-jshint": "*"
   },
   "devDependencies": {
     "browser-sync": "^2.18.13",

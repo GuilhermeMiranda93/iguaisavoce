@@ -100,7 +100,7 @@ Navbar
 #navbar {
   background-color: #FFBC6C;
   padding: 0;
-  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.3);
+  box-shadow: 3px 0 10px 0 rgba(0, 0, 0, 0.1);
   min-height: 100vh; }
 
 .menu-tablet {
@@ -133,6 +133,15 @@ Navbar
   border-top: 2px inset rgba(255, 255, 255, 0.5);
   border-bottom: 2px outset rgba(255, 255, 255, 0.5); }
   .nav #assuntos li {
+    border: none; }
+
+.nav #assuntosdesk {
+  list-style-type: none;
+  background-color: #FFC885;
+  padding-left: 1em;
+  border-top: 2px inset rgba(255, 255, 255, 0.5);
+  border-bottom: 2px outset rgba(255, 255, 255, 0.5); }
+  .nav #assuntosdesk li {
     border: none; }
 
 /*-----------------------
@@ -183,7 +192,7 @@ Conteúdo
       transition: transform ease 1s; }
     #conteudo .nested-items .card {
       width: 100%;
-      box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.3);
+      box-shadow: 0 5px 7px 0 rgba(0, 0, 0, 0.1);
       margin: 0; }
   #conteudo .item-3 {
     box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.3);
@@ -283,8 +292,25 @@ Loja
 ------------------------*/
 #loja {
   text-align: left;
-  padding: 1em;
   color: #422121; }
+  #loja .card {
+    max-height: fit-content;
+    padding: 1em !important;
+    border: none; }
+    #loja .card .card-block {
+      max-height: fit-content;
+      padding: 0 !important; }
+      #loja .card .card-block h4 {
+        font-weight: 700;
+        font-size: 14pt; }
+    #loja .card .card-img-top {
+      height: 200px;
+      overflow: hidden; }
+      #loja .card .card-img-top img {
+        max-width: 100%;
+        max-height: 100%;
+        min-width: 100%;
+        min-height: 100%; }
   #loja h2 {
     font-weight: 700; }
   #loja .btn {
@@ -375,7 +401,7 @@ Painel
   background-color: rgba(0, 0, 0, 0.5);
   width: 100%;
   height: 100%;
-  display: none;
+  display: flex;
   justify-content: center;
   align-items: center;
   position: fixed;
@@ -392,6 +418,25 @@ Painel
     border-radius: 10px; }
     #loading > div img {
       width: 40px; }
+
+/*-----------------------
+
+Loader
+
+-------------------------*/
+.loader {
+  background-color: rgba(0, 0, 0, 0.9);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0; }
+  .loader img {
+    width: 100px;
+    max-width: 100%; }
 
 /*-----------------------
 

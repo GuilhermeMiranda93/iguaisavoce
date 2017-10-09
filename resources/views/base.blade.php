@@ -31,10 +31,8 @@
 </head>
 <body>
 
-	<div class="row">
-		<div class="col-12 navigation-menu p-2 px-4 text-right">
-			<span><i class="fa fa-shopping-cart fa-2x"></i> </span>
-		</div>
+	<div class="banner">
+		<img src="{{URL::asset('img/banner.png')}}" class="img-fluid">
 	</div>
 
 
@@ -57,8 +55,9 @@
 					<div class="collapse" id="navbarToggleExternalContent">
 						
 						<a href="{{url('/')}}"><li><i class="fa fa-home" aria-hidden="true"></i> Início</li></a>
+						<a href="{{url('/sobre')}}"><li><i class="fa fa-users" aria-hidden="true"></i> Sobre</li></a>
 
-						<a href="#" data-toggle="collapse" data-target="#assuntos"><li><i class="fa fa-quote-left" aria-hidden="true"></i> Assuntos</li></a>
+						<a aria-expanded="false" data-toggle="collapse" data-target="#assuntos"><li><i class="fa fa-quote-left" aria-hidden="true"></i> Assuntos</li></a>
 						<ul class="collapse" id="assuntos">
 							<a href="{{url('/assuntos/1')}}"><li>Comportamento</li></a>
 							<a href="{{url('/assuntos/2')}}"><li>Cotidiano</li></a>
@@ -79,8 +78,10 @@
 				<div class="menu-desktop">
 					<a href="{{url('/')}}"><li><i class="fa fa-home" aria-hidden="true"></i> Início</li></a>
 
-					<a href="#" data-toggle="collapse" data-target="#assuntos"><li><i class="fa fa-quote-left" aria-hidden="true"></i> Assuntos</li></a>
-					<ul class="collapse" id="assuntos">
+					<a href="{{url('/sobre')}}"><li><i class="fa fa-users" aria-hidden="true"></i> Sobre</li></a>
+
+					<a href="#" data-toggle="collapse" data-target="#assuntosdesk"><li><i class="fa fa-quote-left" aria-hidden="true"></i> Assuntos</li></a>
+					<ul class="collapse" id="assuntosdesk">
 						<a href="{{url('/assuntos/1')}}"><li>Comportamento</li></a>
 						<a href="{{url('/assuntos/2')}}"><li>Cotidiano</li></a>
 						<a href="{{url('/assuntos/3')}}"><li>Relacionamento</li></a>

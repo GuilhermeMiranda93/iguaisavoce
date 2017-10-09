@@ -15,7 +15,15 @@
 	return view('emconstrucao');
 });*/
 
+/*-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+
+Funções Site
+
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=*/
+
 Route::get('/', 'Controller@home');
+
+Route::get('/sobre', 'Controller@sobre');
 
 Route::get('/assuntos/{id}', 'Controller@assuntos');
 
@@ -26,6 +34,12 @@ Route::get('/contato', 'Controller@contato');
 Route::get('/videos', 'Controller@videos');
 
 Route::get('/assuntos/post/{id}', 'Controller@assuntosPost');
+
+/*-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+
+Funções Loja
+
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=*/
 
 Route::post('/calcular-frete', 'StoreController@calcularFrete');
 
@@ -40,15 +54,23 @@ Route::get('/carrinho/finalizar', 'StoreController@finalizar');
 
 Route::post('/pagseguro', 'PagSeguroController@pagseguro');
 
+Route::post('/alterarquantidade', 'StoreController@alterarQuantidade');
+
+
+/*-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+Funções painel
+
+-=-=--=-=-=-=-=-=-=-=--=-=-=-=-=-=-=-=-=-=-=-=-*/
 
 Route::get('/painel', function () {
 	return view('painel/login');
 });
 
-Route::get('/painel/assunto', 'Controller@painelAssunto');
-Route::get('/painel/audio', 'Controller@painelAudio');
-Route::get('/painel/video', 'Controller@painelVideo');
-Route::get('/painel/propaganda', 'Controller@painelPropaganda');
+Route::get('/painel/assunto', 'PainelController@painelAssunto');
+Route::get('/painel/audio', 'PainelController@painelAudio');
+Route::get('/painel/video', 'PainelController@painelVideo');
+Route::get('/painel/propaganda', 'PainelController@painelPropaganda');
 Route::get('/painel/produto', 'StoreController@painelProduto');
 
 
@@ -56,15 +78,18 @@ Route::get('/painel/painel', function () {
 	return view('painel/painel');
 });
 
-Route::post('/painel/assunto/sav', 'Controller@saveBlog');
-Route::post('/painel/audio/sav', 'Controller@saveAudio');
-Route::post('/painel/video/sav', 'Controller@saveVideo');
-Route::post('/painel/propaganda/sav', 'Controller@savePropaganda');
+Route::post('/painel/assunto/sav', 'PainelController@saveBlog');
+Route::post('/painel/audio/sav', 'PainelController@saveAudio');
+Route::post('/painel/video/sav', 'PainelController@saveVideo');
+Route::post('/painel/propaganda/sav', 'PainelController@savePropaganda');
 Route::post('/painel/produto/sav', 'StoreController@CadastrarProduto');
 
-Route::get('/del/{id}', 'Controller@deletarBlog');
-Route::get('/vis/{id}', 'Controller@verBlog');
-Route::get('/edit/{id}', 'Controller@editarBlog');
+Route::get('/painel/sobre', 'PainelController@editarSobre');
+Route::post('/painel/sobre/sav', 'PainelController@saveSobre');
+
+Route::get('/del/{id}', 'PainelController@deletarBlog');
+Route::get('/vis/{id}', 'PainelController@verBlog');
+Route::get('/edit/{id}', 'PainelController@editarBlog');
 
 Route::get('/delproduto/{id}', 'StoreController@deletarProduto');
 Route::get('/visproduto/{id}', 'StoreController@verProduto');

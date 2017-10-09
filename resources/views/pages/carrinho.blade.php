@@ -7,7 +7,7 @@
 
 		<div id="loading">
 			<div>
-				<img src="{{URL::asset('img/loading.gif')}}" alt="Carregando...">
+				<img src="{{URL::asset('img/loader.gif')}}" alt="Carregando...">
 			</div>
 			
 		</div>
@@ -25,9 +25,12 @@
 			<tbody>
 				@foreach($produto as $item)
 				<tr>
+					<td class="d-none">
+						<input class="id_produto" value="{{$item->id}}" hidden>
+					</td>
 					<td>{{$item->nome}}</td>
 					<td class="text-center">
-						<input class="text-center numberinput" id="qtd{{$loop->index}}" min="1" type="number" name="quantidade" value="1" required>
+						<input class="text-center numberinput" id="qtd{{$loop->index}}" min="1" type="number" name="quantidade" value="{{$item->qtdsession}}" required>
 					</td>
 					<td class="text-center valorcarrinho" value="{{$item->valor}}" id="valor{{$loop->index}}">R$ {{number_format($item->valor, 2, ',', '.')}}</td>
 					<td class="text-center">
@@ -38,8 +41,8 @@
 				@endforeach
 
 				<tr class="table-warning">
-					<td colspan="2">Frete</td>
-					<td colspan="2" class="text-right" id="frete" value="0">R$ 0</td>
+					<td colspan="2">Frete único para todo o Brasil</td>
+					<td colspan="2" class="text-right" id="frete" value="10">R$ 10,00</td>
 				</tr>
 
 				<tr class="table-success">
@@ -50,56 +53,15 @@
 
 		</table>
 
+		<form id="comprar" action="https://sandbox.pagseguro.uol.com.br/checkout/v2/payment.html" method="post" onsubmit="PagSeguroLightbox(this); return false;">
 
-		<form class="mb-4">
-			{{csrf_field()}}
-			<div class="form-group">
-				<input type="number" class="form-control" name="sCepDestino" id="destino" placeholder="Digite seu CEP">
-				<small>Somente números</small>
-			</div>
-
-			<input type="text" name="nCdServico" value="41106" placeholder="Serviço de envio" hidden>
-
-			<fieldset class="form-group">
-				<legend>Escolha a opção de envio</legend>
-				<div class="form-check">
-					<label class="form-check-label">
-						<input type="radio" class="form-check-input" name="optionsRadios" id="servico0" value="frete_normal" checked>
-						Normal
-					</label>
-				</div>
-
-				<div class="form-check">
-					<label class="form-check-label">
-						<input type="radio" class="form-check-input" name="optionsRadios" id="servico1" value="40010">
-						SEDEX
-					</label>
-				</div>
-
-				<div class="form-check">
-					<label class="form-check-label">
-						<input type="radio" class="form-check-input" name="optionsRadios" id="servico2" value="41106">
-						PAC
-					</label>
-				</div>
-
-			</fieldset>
-
-			<input type="text" name="nVlPeso" value="0.100" id="peso" placeholder="Peso" hidden>
-			<input type="number" name="nVlComprimento" value="27" id="comprimento" placeholder="Comprimento" hidden>
-			<input type="number" name="nVlAltura" value="9" id="altura" placeholder="Altura" hidden>
-			<input type="number" name="nVlLargura" value="18" id="largura" placeholder="Largura" hidden>
+			<input type="hidden" name="code" id="code" value="" />
 
 		</form>
 
-		<button class="btn btn-primary mb-4" id="calcular_frete">Calcular Frete</button>
 		<button class="btn btn-primary mb-4" id="finalizar_compra">Finalizar compra</button>
 
 	</div>
 
-</div>
-
-<div class="loader">
-	<img src="{{URL::asset('img/loader.gif')}}" class="img-fluid">
 </div>
 @stop

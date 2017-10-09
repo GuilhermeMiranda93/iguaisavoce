@@ -29,28 +29,7 @@
 					<div class="form-group">
 						<label for="autor_input">Autor</label>
 						<input name="autor" type="text" class="form-control" id="autor_input">
-					</div> 
-					<div class="form-group row">
-
-						<div class="col-6 col-md-3">
-							<label for="largura_input">Largura</label>
-							<input name="largura" type="number" class="form-control" id="largura_input" placeholder="cm">
-						</div>
-						<div class="col-6 col-md-3">
-						<label for="altura_input">Altura</label>
-							<input name="altura" type="number" class="form-control" id="altura_input" placeholder="cm">
-						</div>
-						<div class="col-6 col-md-3">
-							<label for="profundidade_input">Profundidade</label>
-							<input name="profundidade" type="number" class="form-control" id="profundidade_input" placeholder="cm">
-						</div>
-						<div class="col-6 col-md-3">
-							<label for="peso_input">Peso</label>
-							<input name="peso" type="number" class="form-control" id="peso_input" placeholder="gramas">
-						</div>
-						
-						<small class="form-text text-muted">Preencha os dados para cálculo de frete.</small>
-					</div>                    
+					</div>                  
 
 					<button id="new" type="button" class="btn btn-primary"><i class="fa fa-plus" aria-hidden="true"></i> Novo</button>
 					<button type="submit" class="btn btn-primary"><i class="fa fa-save" aria-hidden="true"></i> Salvar</button>

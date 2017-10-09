@@ -11,8 +11,8 @@
 				{{csrf_field()}}
 				@foreach($texto as $txt)
 					<div class="form-group">
-						<label for="titulo_input">{{$txt->titulo}}</label>
-						<input name="titulo" type="text" class="form-control" id="titulo_input">
+						<label for="titulo_input">Título</label>
+						<input name="titulo" type="text" class="form-control" value="{{$txt->titulo}}" id="titulo_input">
 					</div>
 					<div class="form-group">
 						<label for="autor_input">{{$txt->autor}}</label>

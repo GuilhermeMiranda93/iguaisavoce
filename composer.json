@@ -6,10 +6,12 @@
     "type": "project",
     "require": {
         "php": ">=5.6.4",
+        "anchu/ftp": "~2.0",
+        "barryvdh/laravel-cors": "^0.9.3",
         "laravel/framework": "5.4.*",
         "laravel/tinker": "~1.0",
-        "anchu/ftp": "~2.0",
-        "pagseguro/pagseguro-php-sdk" : "*"
+        "pagseguro/pagseguro-php-sdk": "*",
+        "pagseguro/php3":"*"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
