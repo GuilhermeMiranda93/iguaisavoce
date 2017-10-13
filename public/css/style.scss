@@ -413,11 +413,11 @@ Loja
 	color: $cor_secundaria;
 
 	.card{
-		max-height: fit-content;
+		text-align: center;
 		padding: 1em !important;
 		border: none;
+		display: block;
 		.card-block{
-			max-height: fit-content;
 			padding: 0 !important;
 
 			h4{

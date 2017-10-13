@@ -17,21 +17,23 @@ class PagSeguroController extends BaseController{
 	public function pagseguro(){
 
 		/*-=-=-=-=-=-=-   Ambiente de Produção -=-=-=-=-=-=*/
-		// $data['token'] ='1365C3138BD148A2A08B1769638F03E1';
+		$data['token'] ='1365C3138BD148A2A08B1769638F03E1';
 
 		/*-=-=-=-=-=-=-   Ambiente de Teste -=-=-=-=-=-=*/
-		$data['token'] ='AE358690BFB244008AC56E307129C54B';
+		// $data['token'] ='AE358690BFB244008AC56E307129C54B';
 		
 		$data['email'] = 'contato@iguaisavoce.com.br';
 		$data['currency'] = 'BRL';
+
 
 		/*-=-=-=-=--=Pegar dados da session-=-=-=--=-=-=*/
 		$value = Session::get('cart');
 
 		$data['itemId1'] = 0;
 		$data['itemQuantity1'] = 1;
-		$data['itemDescription1'] = "Frete Único para todo o Brasil";
+		$data['itemDescription1'] = "Frete Unico para todo o Brasil";
 		$data['itemAmount1'] = "10.00";
+		$data['encoding'] = "UTF-8";
 
 		$aux = 2;
 
@@ -50,9 +52,11 @@ class PagSeguroController extends BaseController{
 
 			$aux++;
 		}
+
+
 		
 
-		$url = 'https://ws.sandbox.pagseguro.uol.com.br/v2/checkout';
+		$url = 'https://ws.pagseguro.uol.com.br/v2/checkout';
 
 		$data = http_build_query($data);
 

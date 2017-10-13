@@ -13,7 +13,7 @@
 				<p class="card-text text-muted text-center">R$ {{$item->valor}}</p>
 				<a href="{{url('/shopping/'.$item->id)}}" class="text-muted text-center">+ Detalhes</a>
 			</div>
-			<div class="card-footer p-0 my-2 text-center">
+			<div class="p-0 my-2 text-center">
 				<a href="{{url('/addprodutocarrinho/'.$item->id)}}" class="btn btn-primary text-center">Adicionar ao Carrinho</a>
 			</div>
 		</div>

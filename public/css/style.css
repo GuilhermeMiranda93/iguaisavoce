@@ -294,11 +294,11 @@ Loja
   text-align: left;
   color: #422121; }
   #loja .card {
-    max-height: fit-content;
+    text-align: center;
     padding: 1em !important;
-    border: none; }
+    border: none;
+    display: block; }
     #loja .card .card-block {
-      max-height: fit-content;
       padding: 0 !important; }
       #loja .card .card-block h4 {
         font-weight: 700;

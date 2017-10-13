@@ -128,7 +128,7 @@
 	<script type="text/javascript" src="{{URL::asset('lib/froala-editor/js/froala_editor.pkgd.min.js')}}"></script>
 
 	<!-- PagSeguro -->
-	<script type="text/javascript" src="https://stc.sandbox.pagseguro.uol.com.br/pagseguro/api/v2/checkout/pagseguro.lightbox.js"></script>
+	<script type="text/javascript" src="https://stc.pagseguro.uol.com.br/pagseguro/api/v2/checkout/pagseguro.lightbox.js"></script>
 
 </body>
 </html>
