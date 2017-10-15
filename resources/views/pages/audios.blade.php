@@ -12,7 +12,7 @@
 				<div class="card-block">
 					<p class="card-text">{{$audio->chamada}}</p>
 					<audio controls>
-						<source src="audio/{{$audio->arquivo}}" type="audio/mpeg"/>
+						<source src="{{$audio->arquivo}}" type="audio/mpeg"/>
 						Your browser does not support the audio element.
 					</audio>
 				</div>

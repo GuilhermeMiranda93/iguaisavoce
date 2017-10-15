@@ -106,7 +106,9 @@
 
 		<div id="merchan" class="merchan col-md-2">
 			@foreach($propaganda as $prop)
-			<img class="img-max-x" src="{{url('img/'.$prop->arquivo)}}"/>
+			<a href="{{$prop->chamada}}">
+			<img class="img-max-x" src="{{url($prop->arquivo)}}"/>
+			</a>
 			@endforeach
 		</div>
 

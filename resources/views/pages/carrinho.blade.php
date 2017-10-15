@@ -60,6 +60,7 @@
 		</form>
 
 		<button class="btn btn-primary mb-4" id="finalizar_compra">Finalizar compra</button>
+		<a class="btn btn-primary mb-4" href="{{url('shopping')}}">Continuar comprando</a>
 
 	</div>
 
